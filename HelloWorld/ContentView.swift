@@ -10,38 +10,32 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        VStack {
+            Brain()
+            Text("Hello World")
+                .font(.largeTitle)
+        }
+    }
+}
+
+struct Brain: View {
+    var body: some View {
         ZStack {
             Image("brain")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 400, height: 500)
+                .offset(x: -20, y: 0)
+                .frame(width: 300, height: 400)
                 .clipped()
-                .rotationEffect(.degrees(10), anchor: .center)
-            Ellipse()
-                .stroke(lineWidth: 4)
-                .foregroundColor(.pink)
-                .frame(width: 100, height: 300)
-            Ellipse()
-                .stroke(lineWidth: 4)
-                .foregroundColor(.purple)
-                .frame(width: 100, height: 300)
-                .rotationEffect(.degrees(30), anchor: .bottom)
-            Ellipse()
-                .stroke(lineWidth: 4)
-                .foregroundColor(.green)
-                .frame(width: 100, height: 300)
-                .rotationEffect(.degrees(-30), anchor: .bottom)
-            Circle()
-                .foregroundColor(.green)
-                .frame(width: 100, height: 100)
-                .position(x: 120, y: 150)
-                .edgesIgnoringSafeArea(.top)
-            Rectangle()
-                .foregroundColor(.orange)
-                .frame(width: 100, height: 100)
-                .position(x: 300, y: 350)
-                .edgesIgnoringSafeArea(.top)
+            Text("brain")
+                .fontWeight(.light)
+                .font(.largeTitle)
+                .foregroundColor(.white)
+                .padding()
+                .frame(width: 300, height: 400)
+                .shadow(radius:5)
         }
+        .rotation3DEffect(.degrees(45), axis: (x: 1, y: 0, z: 0))
     }
 }
 
