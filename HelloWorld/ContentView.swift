@@ -10,33 +10,37 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            VStack {
-                VStack(alignment: .trailing) {
-                    Text("Bicycle for the Mind")
-                    Text("知性の自転車")
-                        .offset(x: -10.0, y: 0)
-                }
-                .padding(.top, 80)
-                VStack(alignment: .trailing) {
-                    Text("Pity is akin to love")
-                    Text("哀れみは恋の始まり")
-                        .offset(x: -10, y: 0)
-                }
-                .padding(.top, 20)
-            }
+        ZStack {
             Image("brain")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 300, height: 400)
+                .frame(width: 400, height: 500)
                 .clipped()
-                .overlay(
-                    Text("Hello World")
-                        .font(.largeTitle)
-                        .fontWeight(.light)
-                        .offset(x: 0, y: -50)
-                      .foregroundColor(Color.red)
-                )
+                .rotationEffect(.degrees(10), anchor: .center)
+            Ellipse()
+                .stroke(lineWidth: 4)
+                .foregroundColor(.pink)
+                .frame(width: 100, height: 300)
+            Ellipse()
+                .stroke(lineWidth: 4)
+                .foregroundColor(.purple)
+                .frame(width: 100, height: 300)
+                .rotationEffect(.degrees(30), anchor: .bottom)
+            Ellipse()
+                .stroke(lineWidth: 4)
+                .foregroundColor(.green)
+                .frame(width: 100, height: 300)
+                .rotationEffect(.degrees(-30), anchor: .bottom)
+            Circle()
+                .foregroundColor(.green)
+                .frame(width: 100, height: 100)
+                .position(x: 120, y: 150)
+                .edgesIgnoringSafeArea(.top)
+            Rectangle()
+                .foregroundColor(.orange)
+                .frame(width: 100, height: 100)
+                .position(x: 300, y: 350)
+                .edgesIgnoringSafeArea(.top)
         }
     }
 }
