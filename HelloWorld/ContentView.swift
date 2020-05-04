@@ -10,32 +10,29 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Brain()
-            Text("Hello World")
-                .font(.largeTitle)
+        NavigationView {
+            List {
+                Text("Content1")
+                Text("Content2")
+                HStack {
+                    Image("brain")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height:80)
+                    Text("脳")
+                }
+                Text("Content4")
+                VStack {
+                    Image("dog")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height:80)
+                    Text("犬")
+                }
+                Text("Content6")
+            }
+            .navigationBarTitle("リスト表示", displayMode: .inline)
         }
-    }
-}
-
-struct Brain: View {
-    var body: some View {
-        ZStack {
-            Image("brain")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .offset(x: -20, y: 0)
-                .frame(width: 300, height: 400)
-                .clipped()
-            Text("brain")
-                .fontWeight(.light)
-                .font(.largeTitle)
-                .foregroundColor(.white)
-                .padding()
-                .frame(width: 300, height: 400)
-                .shadow(radius:5)
-        }
-        .rotation3DEffect(.degrees(45), axis: (x: 1, y: 0, z: 0))
     }
 }
 
