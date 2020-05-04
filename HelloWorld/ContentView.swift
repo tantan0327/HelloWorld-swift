@@ -8,16 +8,26 @@
 
 import SwiftUI
 
-let metro = ["銀座線", "丸の内線", "日比谷線", "東西線", "千代田線", "半蔵門線", "南北線", "副都心線"]
-
 struct ContentView: View {
-    var body: some View {        
-        List(0 ..< metro.count) { item in
-            HStack {
-                Text(String(item))
-                Text(metro[item])
+    
+    let shikoku = ["徳島県", "香川県", "愛媛県", "高知県"]
+    let kyusyu = ["福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県"]
+    
+    var body: some View {
+        List {
+            Section(header: Text("四国").font(.largeTitle).padding(.top), footer: Text("最高標高は石鎚山の1,982m")) {
+                ForEach(0 ..< shikoku.count) { index in
+                    Text(self.shikoku[index])
+                }
+            }
+
+            Section(header: Text("九州").font(.largeTitle).padding(.top), footer: Text("最高標高は宮之浦岳の1,936m")) {
+                ForEach(0 ..< kyusyu.count) { index in
+                    Text(self.kyusyu[index])
+                }
             }
         }
+        .listStyle(GroupedListStyle())
     }
 }
 
