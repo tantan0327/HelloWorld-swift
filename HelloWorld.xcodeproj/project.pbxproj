@@ -15,6 +15,7 @@
 		FF259D8724590AFF003F156A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF259D8524590AFF003F156A /* LaunchScreen.storyboard */; };
 		FFC0CC8D245FAE4300284DBC /* PhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC0CC8C245FAE4300284DBC /* PhotoData.swift */; };
 		FFC0CC8F245FAFB200284DBC /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC0CC8E245FAFB200284DBC /* RowView.swift */; };
+		FFC0CC91245FB76D00284DBC /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC0CC90245FB76D00284DBC /* PhotoDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		FF259D8824590AFF003F156A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFC0CC8C245FAE4300284DBC /* PhotoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoData.swift; sourceTree = "<group>"; };
 		FFC0CC8E245FAFB200284DBC /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
+		FFC0CC90245FB76D00284DBC /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				FF259D7E24590AF9003F156A /* ContentView.swift */,
 				FF259D8024590AFF003F156A /* Assets.xcassets */,
 				FFC0CC8C245FAE4300284DBC /* PhotoData.swift */,
+				FFC0CC90245FB76D00284DBC /* PhotoDetailView.swift */,
 				FFC0CC8E245FAFB200284DBC /* RowView.swift */,
 				FF259D8524590AFF003F156A /* LaunchScreen.storyboard */,
 				FF259D8824590AFF003F156A /* Info.plist */,
@@ -154,6 +157,7 @@
 			files = (
 				FF259D7B24590AF9003F156A /* AppDelegate.swift in Sources */,
 				FFC0CC8F245FAFB200284DBC /* RowView.swift in Sources */,
+				FFC0CC91245FB76D00284DBC /* PhotoDetailView.swift in Sources */,
 				FF259D7D24590AF9003F156A /* SceneDelegate.swift in Sources */,
 				FFC0CC8D245FAE4300284DBC /* PhotoData.swift in Sources */,
 				FF259D7F24590AF9003F156A /* ContentView.swift in Sources */,
