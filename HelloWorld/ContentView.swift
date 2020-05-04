@@ -8,30 +8,15 @@
 
 import SwiftUI
 
+let metro = ["銀座線", "丸の内線", "日比谷線", "東西線", "千代田線", "半蔵門線", "南北線", "副都心線"]
+
 struct ContentView: View {
-    var body: some View {
-        NavigationView {
-            List {
-                Text("Content1")
-                Text("Content2")
-                HStack {
-                    Image("brain")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height:80)
-                    Text("脳")
-                }
-                Text("Content4")
-                VStack {
-                    Image("dog")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height:80)
-                    Text("犬")
-                }
-                Text("Content6")
+    var body: some View {        
+        List(0 ..< metro.count) { item in
+            HStack {
+                Text(String(item))
+                Text(metro[item])
             }
-            .navigationBarTitle("リスト表示", displayMode: .inline)
         }
     }
 }
