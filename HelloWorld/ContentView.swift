@@ -11,6 +11,8 @@ import SwiftUI
 struct ContentView: View {
     @State var num:Int = 0
     @State var msg = "Thank you!"
+    @State var iLike = true
+    @State var isFast = true
     
     var body: some View {
         VStack {
@@ -27,7 +29,8 @@ struct ContentView: View {
             Text("\(num)")
                 .font(.largeTitle)
                 .padding()
-            
+            Divider()
+
             Button("Tap") {
                 if self.msg == "Thank you!" {
                     self.msg = "ありがとう!"
@@ -43,6 +46,48 @@ struct ContentView: View {
                         .frame(width: 80, height: 30)
                 )
             Text(msg).padding()
+
+            Divider()
+
+            // $でオブジェクトそのものにアクセスし、現在の値をを取得
+            Toggle(isOn: $iLike) {
+                Text("Like or Not")
+                    .font(.largeTitle)
+            }
+            .fixedSize()
+            .padding(50)
+
+
+            if iLike {
+                Image(systemName: "heart.fill")
+                    .font(.system(size: 80))
+                    .foregroundColor(.red)
+            } else {
+                Image(systemName: "heart.slash")
+                    .font(.system(size: 80))
+                    .foregroundColor(.gray)
+            }
+
+            Divider()
+            
+            HStack {
+                Button(action: {
+                    withAnimation {
+                        self.isFast.toggle()
+                    }
+                }) {
+                    Image(systemName: isFast ? "hare" : "tortoise")
+                        .foregroundColor(isFast ? .blue : .black)
+                        .rotationEffect(.degrees(isFast ? 0 : 180))
+                        .scaleEffect(3)
+                }
+                .padding(30)
+                
+                Text(isFast ? "Fast" : "Slow")
+                    .font(.title)
+                    .foregroundColor(isFast ? .pink : .gray)
+                    .rotationEffect(.degrees(isFast ? 0 : 180))
+            }
         }
     }
 }
