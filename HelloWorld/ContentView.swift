@@ -9,26 +9,41 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var selectedColor = 0
-    let colorViews = [Color.red, Color.green, Color.blue]
+    @State var theDate = Date()
+    @Environment(\.locale) var locale: Locale
+    
+    var dateformatter: DateFormatter {
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "ja_JP")
+        df.dateStyle = .full
+        df.timeStyle = .short
+        df.dateFormat = "yyyy年MM月dd日 HH時mm分"
+        return df
+    }
+    
+    var dateClosedRange: ClosedRange<Date> {
+        let min = Calendar.current.date(byAdding: .month, value: -1, to:Date())!
+        let max = Calendar.current.date(byAdding: .month, value: 1, to: Date())!
+        return min...max
+    }
     
     var body: some View {
-        VStack {
-            Picker(selection: $selectedColor, label: Text("Color")) {
-                Text("Red").tag(0)
-                Text("Green").tag(1)
-                Text("Blue").tag(2)
-            }
-            .pickerStyle(SegmentedPickerStyle())
+        Form {
+            Text(dateformatter.string(from: theDate))
+                .font(.headline)
             
-            symbolImage(num: selectedColor)
-                .resizable()
-                .foregroundColor(colorViews[selectedColor])
-                .frame(width: 100, height: 100)
-                .padding()
-        }
-        .padding()
+            DatePicker(selection: $theDate,
+                       in: dateClosedRange,
+                       displayedComponents: .date,
+                       label: { Text("日付") }).environment(\.locale, Locale(identifier: "ja_JP"))
+            
+            DatePicker(selection: $theDate,
+                       in: dateClosedRange,
+                       displayedComponents: .hourAndMinute,
+                       label: { Text("時刻") }).environment(\.locale, Locale(identifier: "ja_JP"))
+        }.padding()
     }
+        
         
     
     func symbolImage(num: Int) -> Image {
