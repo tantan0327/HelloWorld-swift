@@ -9,34 +9,64 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var kosu:Int = 0
-    let tanaka = 240
-    let tax = 0.1
+    @State var volume: Double = 0.0
+    
+    @State var R:Double = 0
+    @State var G:Double = 0
+    @State var B:Double = 0
     
     var body: some View {
         VStack {
-            Stepper(
-                onIncrement: {
-                    self.kosu += 5
-                    self.kosu = min(self.kosu, 30)
-                },
-                onDecrement: {
-                    self.kosu -= 5
-                    self.kosu = max(self.kosu, 0)
-                },
-                label: {Text("個数: \(self.kosu)")}
-            ).frame(width: 200)
+            HStack {
+                Text("\(format(volume))").frame(width: 100)
+                HStack {
+                    Image(systemName: "speaker.slash").imageScale(.large)
+                    Slider(value: $volume)
+                    Image(systemName: "speaker.3").imageScale(.large)
+                }
+                .frame(width: 200)
+            }
             
-            Text("料金: \(calc(self.kosu))円[税込み]")
-                .underline()
+            VStack(alignment: .center) {
+                Circle()
+                    .frame(width: 100, height: 100)
+                .padding()
+                    .foregroundColor(Color(red: R/255, green: G/255, blue: B/255))
+                
+                HStack{
+                    Circle()
+                        .foregroundColor(.red)
+                        .frame(width:20, height: 20)
+                    Text(String(Int(R))).frame(width: 40)
+                    Slider(value: $R, in: 0...255).frame(width: 200)
+                }
+                
+                HStack{
+                    Circle()
+                        .foregroundColor(.green)
+                        .frame(width:20, height: 20)
+                    Text(String(Int(G))).frame(width: 40)
+                    Slider(value: $G, in: 0...255).frame(width: 200)
+                }
+                
+                HStack{
+                    Circle()
+                        .foregroundColor(.blue)
+                        .frame(width:20, height: 20)
+                    Text(String(Int(B))).frame(width: 40)
+                    Slider(value: $B, in: 0...255).frame(width: 200)
+                }
+            }
         }
+        
     }
     
-    func calc(_ num:Int) -> Int {
-        let price = self.tanaka * num
-        let result = Double(price) * (1 + self.tax)
-        return Int(result)
+    func format(_ num:Double) -> String {
+        let result = String(round(num*100)/100)
+        return result
     }
+    
+    
 }
 
 
