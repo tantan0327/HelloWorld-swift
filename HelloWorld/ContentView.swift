@@ -8,54 +8,85 @@
 
 import SwiftUI
 
+extension UIApplication {
+    func endEditing() {
+        sendAction(
+            #selector(UIResponder.resignFirstResponder),
+            to: nil, from: nil, for: nil
+        )
+    }
+}
+ 
 struct ContentView: View {
-    @State var theDate = Date()
-    @Environment(\.locale) var locale: Locale
-    
-    var dateformatter: DateFormatter {
-        let df = DateFormatter()
-        df.locale = Locale(identifier: "ja_JP")
-        df.dateStyle = .full
-        df.timeStyle = .short
-        df.dateFormat = "yyyy年MM月dd日 HH時mm分"
-        return df
-    }
-    
-    var dateClosedRange: ClosedRange<Date> {
-        let min = Calendar.current.date(byAdding: .month, value: -1, to:Date())!
-        let max = Calendar.current.date(byAdding: .month, value: 1, to: Date())!
-        return min...max
-    }
+    @State var name: String = ""
+    @State var kosu: String = ""
+    let tanaka: Double = 250
+    let tax: Double = 1.1
     
     var body: some View {
-        Form {
-            Text(dateformatter.string(from: theDate))
-                .font(.headline)
-            
-            DatePicker(selection: $theDate,
-                       in: dateClosedRange,
-                       displayedComponents: .date,
-                       label: { Text("日付") }).environment(\.locale, Locale(identifier: "ja_JP"))
-            
-            DatePicker(selection: $theDate,
-                       in: dateClosedRange,
-                       displayedComponents: .hourAndMinute,
-                       label: { Text("時刻") }).environment(\.locale, Locale(identifier: "ja_JP"))
-        }.padding()
+        ZStack {
+            Color.white.onTapGesture {
+                UIApplication.shared.endEditing()
+            }
+        
+        
+            VStack(alignment: .leading) {
+                
+                TextField("お名前は?", text: $name)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(width: 250)
+                
+                if (!name.isEmpty) {
+                    Text("\(name)さん、こんにちは!")
+                    .foregroundColor(.blue)
+                }
+                
+                HStack {
+                    Text("個数:").padding(.horizontal, 0)
+                    TextField("0", text: $kosu)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.numberPad)
+                        .frame(width: 100)
+                }
+                .font(.title)
+                .frame(width: 200)
+                
+                Group {
+                    if kosuCheck(min: 1, max: 10) {
+                        Text("\(price())円です。")
+                            .font(.title)
+                            .foregroundColor(.blue)
+                    } else {
+                            Text("個数は1 ~ 10個入れてください")
+                                .foregroundColor(.red)
+                                .font(.headline)
+                    }
+                }.frame(width: 300, height: 30)
+                
+                
+                
+            }
+            .position(x:200, y: 200)
+        }
+    
     }
         
         
     
-    func symbolImage(num: Int) -> Image {
-        switch num {
-        case 0:
-            return Image(systemName: "r.circle")
-        case 1:
-            return Image(systemName: "g.circle")
-        case 2:
-            return Image(systemName: "b.circle")
-        default:
-            return Image(systemName: "r.circle")
+    func kosuCheck(min: Int, max: Int) -> Bool {
+        guard let num = Int(kosu) else {
+            return false
+        }
+        
+        return (num >= min && num <= max)
+    }
+    
+    func price() -> Int {
+        if let num = Double(kosu) {
+            let result = Int(tanaka * num * tax)
+            return result
+        } else {
+            return -1
         }
     }
     
