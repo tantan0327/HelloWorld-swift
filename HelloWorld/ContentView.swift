@@ -9,47 +9,39 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedSize = 2
-    @State private var selectedColor = 0
-    let sizes = ["XS", "S", "M", "L", "LL"]
-    let colors = ["Red", "Green", "Blue", "Yellow", "Pink", "White"]
+    @State var selectedColor = 0
+    let colorViews = [Color.red, Color.green, Color.blue]
     
     var body: some View {
         VStack {
-            HStack {
-                Picker(selection: $selectedSize, label: Text("")) {
-                    ForEach(0..<sizes.count) { index in
-                        Text(self.sizes[index]).tag(index)
-                    }
-                }
-                .frame(width: 200)
-                
-                Picker(selection: $selectedColor, label: Text("")) {
-                    ForEach(0..<colors.count) { index in
-                        Text(self.colors[index]).tag(index)
-                    }
-                }
-                .frame(width: 200)
-                .onAppear(perform: {
-                    self.selectedColor = self.colors.count/2
-                })
-                
+            Picker(selection: $selectedColor, label: Text("Color")) {
+                Text("Red").tag(0)
+                Text("Green").tag(1)
+                Text("Blue").tag(2)
             }
+            .pickerStyle(SegmentedPickerStyle())
             
-            HStack {
-                Text("size: \(sizes[selectedSize])").padding(.horizontal, 40)
-                Text("color: \(sizes[selectedColor])").padding(.horizontal, 30)
-            }
-            .foregroundColor(Color.white)
-            .font(.headline)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .frame(width: 300, height: 40)
-                    .foregroundColor(Color.gray))
+            symbolImage(num: selectedColor)
+                .resizable()
+                .foregroundColor(colorViews[selectedColor])
+                .frame(width: 100, height: 100)
+                .padding()
         }
+        .padding()
+    }
         
-        
-        
+    
+    func symbolImage(num: Int) -> Image {
+        switch num {
+        case 0:
+            return Image(systemName: "r.circle")
+        case 1:
+            return Image(systemName: "g.circle")
+        case 2:
+            return Image(systemName: "b.circle")
+        default:
+            return Image(systemName: "r.circle")
+        }
     }
     
 }
