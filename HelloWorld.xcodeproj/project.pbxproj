@@ -17,6 +17,7 @@
 		FFC0CC8F245FAFB200284DBC /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC0CC8E245FAFB200284DBC /* RowView.swift */; };
 		FFC0CC91245FB76D00284DBC /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC0CC90245FB76D00284DBC /* PhotoDetailView.swift */; };
 		FFDACAD72466483800F8B2A3 /* SomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDACAD62466483800F8B2A3 /* SomeView.swift */; };
+		FFDACAD924664B6B00F8B2A3 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDACAD824664B6B00F8B2A3 /* PhotoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		FFC0CC8E245FAFB200284DBC /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 		FFC0CC90245FB76D00284DBC /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
 		FFDACAD62466483800F8B2A3 /* SomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeView.swift; sourceTree = SOURCE_ROOT; };
+		FFDACAD824664B6B00F8B2A3 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				FF259D7E24590AF9003F156A /* ContentView.swift */,
 				FF259D8024590AFF003F156A /* Assets.xcassets */,
 				FFC0CC8C245FAE4300284DBC /* PhotoData.swift */,
+				FFDACAD824664B6B00F8B2A3 /* PhotoView.swift */,
 				FFC0CC90245FB76D00284DBC /* PhotoDetailView.swift */,
 				FFC0CC8E245FAFB200284DBC /* RowView.swift */,
 				FF259D8524590AFF003F156A /* LaunchScreen.storyboard */,
@@ -165,6 +168,7 @@
 				FF259D7D24590AF9003F156A /* SceneDelegate.swift in Sources */,
 				FFC0CC8D245FAE4300284DBC /* PhotoData.swift in Sources */,
 				FF259D7F24590AF9003F156A /* ContentView.swift in Sources */,
+				FFDACAD924664B6B00F8B2A3 /* PhotoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
