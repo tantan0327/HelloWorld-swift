@@ -7,36 +7,34 @@
 //
 
 import SwiftUI
-
-extension UIApplication {
-    func endEditing() {
-        sendAction(
-            #selector(UIResponder.resignFirstResponder),
-            to: nil, from: nil, for: nil
-        )
-    }
-}
  
 struct ContentView: View {
-    @State var isError: Bool = false
+    @State var isSheet: Bool = false
     
     var body: some View {
         Button(action: {
-            self.isError = true
+            self.isSheet = true
         }) {
-            Text("Alertテスト")
-        }.alert(isPresented: $isError, content:{
-            Alert(title: Text("タイトル"), message: Text("エラーメッセージ"), primaryButton: .destructive(Text("削除する"), action: {
-                okAction()
-            }),
-              secondaryButton: .cancel(Text("キャンセル"), action: {}))
-        })
+            Text("削除")
+                .foregroundColor(.white)
+            .background(Capsule()
+                .foregroundColor(.red)
+                .frame(width: 80, height: 30))
+        }.actionSheet(isPresented: $isSheet) {
+            ActionSheet(title: Text("削除しますか?"),
+                        buttons: [
+                            .destructive(Text("削除"), action: {
+                                deleteProcess()
+                            }),
+                            .cancel(Text("キャンセル"), action: {})
+                ])
+        }
     }
     
 }
 
-func okAction() {
-    print("OKボタンが選ばれた")
+func deleteProcess() {
+    print("削除しました")
 }
 
 
