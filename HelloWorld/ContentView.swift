@@ -9,34 +9,30 @@
 import SwiftUI
  
 struct ContentView: View {
+    @State private var selection = 0
     
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(photoArray) { photoData in
-                    PhotoView(photo:photoData)
-                }
-            }
+        TabView(selection: $selection) {
+            FirstView()
+                .tabItem {
+                    Image(systemName: "gift")
+                    Text("Friends")
+            }.tag(0)
+            SecondView()
+                .tabItem {
+                    Image(systemName: "heart.fill")
+                    Text("Home")
+            }.tag(1)
+            ThirdView()
+                .tabItem {
+                    Image(systemName: "pencil")
+                    Text("Reserve")
+            }.tag(2)
         }
+        
+        
     }
     
-}
-
-struct Page: View {
-    let w:CGFloat = UIScreen.main.bounds.width * 3/5
-    let h:CGFloat = 200
-    let str:String
-    
-    var body: some View {
-        ZStack {
-            Color.gray
-                .frame(width: w, height: h)
-                .cornerRadius(8)
-            Text(str)
-                .font(.largeTitle)
-                .foregroundColor(.white)
-        }
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {
