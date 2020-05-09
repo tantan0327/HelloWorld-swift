@@ -9,26 +9,27 @@
 import SwiftUI
  
 struct ContentView: View {
-    @State var isSheet: Bool = false
+    @State var isModal:Bool = false
+    @State var counter:Int = 0
     
     var body: some View {
-        Button(action: {
-            self.isSheet = true
-        }) {
-            Text("削除")
-                .foregroundColor(.white)
-            .background(Capsule()
-                .foregroundColor(.red)
-                .frame(width: 80, height: 30))
-        }.actionSheet(isPresented: $isSheet) {
-            ActionSheet(title: Text("削除しますか?"),
-                        buttons: [
-                            .destructive(Text("削除"), action: {
-                                deleteProcess()
-                            }),
-                            .cancel(Text("キャンセル"), action: {})
-                ])
+        VStack {
+            Button(action: {
+                self.isModal = true
+            }) {
+                Text("Sheetテスト")
+            }.sheet(isPresented: $isModal, onDismiss: {self.countUp()}) {
+                SomeView()
+            }.disabled(counter >= 3)
+            
+            Text("回数:\(counter)")
+            .font(.title)
+            .padding()
         }
+    }
+    
+    func countUp() {
+        self.counter += 1
     }
     
 }
