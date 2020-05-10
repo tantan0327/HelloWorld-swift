@@ -13,23 +13,11 @@ struct ContentView: View {
     @State var isModal: Bool = false
     
     var body: some View {
-        VStack {
-            HStack {
-                Text(shareData.yesNo ? "Yes" : "No")
-                Text(String(repeating: "★", count: shareData.num))
-                    .foregroundColor(shareData.yesNo ? .green : .gray)
-            }.font(.title)
-            
-            Button(action: {
-                self.isModal = true
-            }) {
-                Text("[設定の変更]")
-                    .padding()
-            }
-            .sheet(isPresented: $isModal) {
-                SettingView().environmentObject(self.shareData)
-            }
-        }
+        MapView()
+        .clipShape(Circle())
+            .overlay(Circle().stroke(Color.white, lineWidth: 4))
+            .shadow(radius: 10)
+        .padding(40)
     }
 }
 
