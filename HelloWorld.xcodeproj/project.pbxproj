@@ -21,6 +21,7 @@
 		FFDACADB2466542E00F8B2A3 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDACADA2466542E00F8B2A3 /* FirstView.swift */; };
 		FFDACADD246654A800F8B2A3 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDACADC246654A800F8B2A3 /* SecondView.swift */; };
 		FFDACADF246654D200F8B2A3 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDACADE246654D200F8B2A3 /* ThirdView.swift */; };
+		FFDACAE1246794AE00F8B2A3 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDACAE0246794AE00F8B2A3 /* NumberTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		FFDACADA2466542E00F8B2A3 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		FFDACADC246654A800F8B2A3 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		FFDACADE246654D200F8B2A3 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
+		FFDACAE0246794AE00F8B2A3 /* NumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				FF259D7A24590AF9003F156A /* AppDelegate.swift */,
 				FF259D7C24590AF9003F156A /* SceneDelegate.swift */,
 				FF259D7E24590AF9003F156A /* ContentView.swift */,
+				FFDACAE0246794AE00F8B2A3 /* NumberTextField.swift */,
 				FFDACADA2466542E00F8B2A3 /* FirstView.swift */,
 				FFDACADC246654A800F8B2A3 /* SecondView.swift */,
 				FFDACADE246654D200F8B2A3 /* ThirdView.swift */,
@@ -172,6 +175,7 @@
 			files = (
 				FFDACAD72466483800F8B2A3 /* SomeView.swift in Sources */,
 				FF259D7B24590AF9003F156A /* AppDelegate.swift in Sources */,
+				FFDACAE1246794AE00F8B2A3 /* NumberTextField.swift in Sources */,
 				FFC0CC8F245FAFB200284DBC /* RowView.swift in Sources */,
 				FFC0CC91245FB76D00284DBC /* PhotoDetailView.swift in Sources */,
 				FF259D7D24590AF9003F156A /* SceneDelegate.swift in Sources */,
