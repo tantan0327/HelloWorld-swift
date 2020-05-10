@@ -9,52 +9,32 @@
 import SwiftUI
  
 struct ContentView: View {
-    @ObservedObject var stopwatch = Stopwatch()
-    let currentTimePublisher = Timer.TimerPublisher(interval: 1.0, runLoop: .main, mode: .default).autoconnect()
-    
-    @State private var now = Date()
+    @EnvironmentObject var shareData: ShareData
+    @State var isModal: Bool = false
     
     var body: some View {
         VStack {
             HStack {
-                Button(action: {
-                    self.stopwatch.start()
-                }) {
-                    Image(systemName: "play")
-                }.padding()
-                
-                Button(action: {
-                    self.stopwatch.stop()
-                }) {
-                    Image(systemName: "pause")
-                }.padding()
-                
-                Button(action: {
-                    self.stopwatch.reset()
-                }) {
-                    Image(systemName: "backward.end")
-                }.padding()
-            }
-            .frame(width: 200)
-            Text("\(self.stopwatch.counter)")
+                Text(shareData.yesNo ? "Yes" : "No")
+                Text(String(repeating: "★", count: shareData.num))
+                    .foregroundColor(shareData.yesNo ? .green : .gray)
+            }.font(.title)
             
-            Divider()
-            
-            VStack {
-                Text("Time is").font(.largeTitle)
-                Text("\(now.description)")
+            Button(action: {
+                self.isModal = true
+            }) {
+                Text("[設定の変更]")
+                    .padding()
             }
-            .onReceive(currentTimePublisher) { date in
-                self.now = date
+            .sheet(isPresented: $isModal) {
+                SettingView().environmentObject(self.shareData)
             }
-            
-        }.font(.largeTitle)
-        
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(ShareData())
     }
 }
