@@ -9,30 +9,45 @@
 import SwiftUI
  
 struct ContentView: View {
-    @State private var selection = 0
+    @State var isMyChecked1:Bool = false
+    @State var isMyChecked2:Bool = false
     
     var body: some View {
-        TabView(selection: $selection) {
-            FirstView()
-                .tabItem {
-                    Image(systemName: "gift")
-                    Text("Friends")
-            }.tag(0)
-            SecondView()
-                .tabItem {
-                    Image(systemName: "heart.fill")
-                    Text("Home")
-            }.tag(1)
-            ThirdView()
-                .tabItem {
-                    Image(systemName: "pencil")
-                    Text("Reserve")
-            }.tag(2)
+        VStack {
+            HStack {
+                Text("担当者1のチェック")
+                CheckMarkPerson(isChecked: $isMyChecked1)
+            }
+            HStack {
+                Text("担当者2のチェック")
+                CheckMarkPerson(isChecked: $isMyChecked2)
+            }
+            
+            if isMyChecked1 && isMyChecked2 {
+                Text("全員チェック済み")
+                    .foregroundColor(.blue)
+                    .padding()
+            } else {
+                Text("チェック待ち")
+                    .foregroundColor(.red)
+                    .padding()
+            }
         }
-        
-        
     }
+}
+
+struct CheckMarkPerson: View {
+    @Binding var isChecked: Bool
     
+    var body: some View {
+        Button(action: {
+            self.isChecked.toggle()
+        }) {
+            Image(systemName: isChecked ? "person.crop.circle.badge.checkmark" : "person.crop.circle").foregroundColor(isChecked ? .blue : .gray)
+        }
+        .imageScale(.large)
+        .frame(width: 40)
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
